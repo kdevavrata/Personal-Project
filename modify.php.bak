@@ -1,0 +1,14 @@
+<?php
+
+include ("dbconnect.php");
+
+
+$sql="update company set comp_name='" . $_POST['comp_name'] . "',comp_address='" . $_POST['comp_address'] . "',
+      comp_phone='" . $_POST['comp_phone'] . "' where comp_id='" . $_POST['comp_phone'] . "'";
+echo $sql;
+$sth=$db->prepare($sql);
+$sth->execute();
+//echo "<script> alert ('Data modified successfully.')</script>";
+//echo "<script>parent.location.href='view_company.php'</script>";
+
+?>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEDICO - Medical Website</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #cccccc, #f0f0f0);
+    }
+    .container {
+      width: 80%;
+      margin: 50px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    #logo {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 100px;
+      height: auto;
+    }
+    #subheading {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+    }
+    form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 10px;
+    }
+    input[type="text"], input[type="tel"], select {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<?php
+include ("dbconnect.php");
+?>
+  <div class="container">
+    <img id="logo" src="Logo1.png" alt="MEDICO Logo">
+    <h1>MEDICO</h1>
+    <marquee id="subheading" behavior="scroll" direction="left">Where minor health problems get fast solutions</marquee>
+    <form name="comp" method="post">
+      <label for="comp_name">Company Name:</label>
+      <input type="text" id="comp_name" name="comp_name" required>
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required>
+      <label for="phone_no">Phone No.:</label>
+      <input type="text" id="phone_no" name="phone_no" required>
+      <input type="submit" name="add" value="Submit">
+    </form>
+  </div>
+</body>
+</html>
+
+
+
+
+<?php
+if (isset($_POST['add']))
+{
+	$sql="select comp_id from comp_count";
+	$sth=$db->prepare($sql);
+	$sth->execute();
+	$result=$sth->fetch(PDO:: FETCH_ASSOC);
+	$count=$result['comp_id'];
+	
+	
+	$sql_query="insert into company values ('$count','" . $_POST['comp_name'] . "','" . $_POST['address'] . "','" . $_POST['phone_no'] . "')";
+	$sth=$db->prepare($sql_query);
+	$sth->execute();
+	echo "<script> alert ('Data inserted successfully.')</script>";
+	
+	$count++;
+	
+	$update_sql="update comp_count set comp_id='$count'";
+	$sth=$db->prepare($update_sql);
+	$sth->execute();
+	
+	
+}   
+?>

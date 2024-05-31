@@ -1,0 +1,57 @@
+<script language="Javascript"  type="text/javascript" src="./ess/time.js"></script> 
+<link href="./ess/bootstrap/css/amit.css" rel="stylesheet">
+<link href="./ess/bootstrap/css/bootstrap.min.css" rel="stylesheet"> 
+<link href="./ess/bootstrap/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> 
+<link href="./ess/bootstrap/fontawesome-free/css/all.min.css"  rel="stylesheet"> 
+<link href="./ess/bootstrap/css/glyphicns.css" rel="stylesheet"> 
+<link href="./ess/bootstrap/bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker.css" rel="stylesheet">
+<script language="Javascript"  type="text/javascript" src="./ess/bootstrap/js/jquery.js"></script>
+<script language="Javascript"  type="text/javascript" src="./ess/bootstrap/js/bootstrap.min.js"></script>
+<script language="Javascript"  type="text/javascript" src="./ess/bootstrap/datatables/jquery.dataTables.min.js"></script> 
+<script language="Javascript"  type="text/javascript" src="./ess/bootstrap/datatables/dataTables.bootstrap4.js"></script>
+<script language="Javascript"  type="text/javascript" src="./ess/bootstrap/bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js "></script>
+<div class="container-fluid bg-dark">
+<div class="row bg-red-gradient"  style="margin-bottom: 0px;margin-top: 0px;padding-bottom: 0px;"> 
+<div class="col-md-1 bg-red-gradient pull-left"> 
+<img src="./ess/logo1.png" class="img-bordered" width="100px" height="90px">
+</div>
+<div class="col-md-10 text-center"> 
+<div class="small-box box-solid">  
+<div class="small-box-header bg-nav1y">
+<h2 class="box-title">Medicine store Portal</h2>  
+</div><!-- /.box-header -->                    
+</div>
+</div>
+<div class="col-md-1 pull-right bg-red-gradient" >
+<img src="./ess/logo1.png" class="img-bordered" width="100px" height="90px">
+</div>
+</div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-yellow p-0" >
+<a class="navbar-brand" href="#"></a>    
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> 
+<span class="navbar-toggler-icon "></span>    </button>    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+<ul class="navbar-nav nav-fill w-100" >
+
+<li class="nav-item dropdown active border-primary">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-th-large"></span> Enter Data
+                </a>
+                <div class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="company.php"><span class="glyphicon glyphicon-edit"></span> Enter Company </a>
+                    <a class="dropdown-item" href="view_company.php"><span class="glyphicon glyphicon-edit"></span> View Company</a>
+                </div>
+</li>
+<li class="nav-item m-6">
+<a class="nav-link active" href=""><span class="glyphicon glyphicon-envelope"></span> Service Engineer Login</a>
+</li>
+
+<li class="nav-item m-6"> 
+<a class="nav-link active" href=""><span class="glyphicon glyphicon-envelope"></span> Admin Login</a>
+</li> 
+<li class="nav-item "> 
+<a class="nav-link active" href=""><span class="glyphicon glyphicon-home"></span> Home</a> 
+</li>
+</ul> 
+</div></nav>        
+		

@@ -1,0 +1,1 @@
+<?php$db = new PDO("mysql:host=LOCALHOST;dbname=medical_store;port=3306;", "root", "" );if (!$db) {echo "<br>Mysql Not connected";exit();} ?>

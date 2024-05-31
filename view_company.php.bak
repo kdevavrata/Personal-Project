@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEDICO - Medical Website</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #cccccc, #f0f0f0);
+    }
+    .container {
+      width: 80%;
+      margin: 50px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    #logo {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 100px;
+      height: auto;
+    }
+    #subheading {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+    }
+    form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 10px;
+    }
+    input[type="text"], input[type="tel"], select {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<?php
+include ("header.php");
+include ("dbconnect.php");
+?>
+  <div class="container">
+    <img id="logo" src="logo1.png" alt="MEDICO Logo">
+    <h1>MEDICO</h1>
+	<form name="disp_form" method="POST">
+	<div class=" col-sm-3 form-group relative login_block">
+            <label for="perno"  class="control-label">Company Id<span class="mandate">*</span></label>
+              
+			<select name="comp_id" class="form-control">
+			<option value=''>Select</option>
+			<?php 
+			$sql="select * from company order by comp_id";
+			$sth=$db->prepare($sql);
+			$sth->execute();
+			$result=$sth->fetchAll(PDO:: FETCH_ASSOC);
+			
+			foreach ($result as $rs)
+			{
+				if ($rs['comp_id']==$_POST['comp_id'])
+					echo "<option value=" . $_POST['comp_id'] . " selected>" . $_POST['comp_id'] .  "</option>";
+				else
+					echo "<option value=" . $rs['comp_id'] . ">" . $rs['comp_id'] .  "</option>";
+			}
+			?>
+			</select>
+	</div>
+	<div class=" col-sm-3 form-group relative login_block">
+	<input type="submit" class="btn btn-info" name="submit" value="Submit">
+	</div>
+	
+
+
+
+
+
+
+<?php
+if (isset($_POST['submit']))
+{
+	$sql="select * from company where comp_id=" . $_POST['comp_id'] . "";
+	$sth=$db->prepare($sql);
+	$sth->execute();
+	$result=$sth->fetch(PDO:: FETCH_ASSOC);
+	?>
+	<form name="comp" method="post" action="modify.php">
+      <label for="comp_name">Company ID</label>
+      <input type="text" id="comp_id" name="comp_id"  value="<?php echo $result['comp_id'] ; ?>" >
+      <label for="comp_name">Company Name:</label>
+      <input type="text" id="comp_name" name="comp_name"  value="<?php echo $result['comp_name'] ; ?>">
+      <label for="comp_address">Company Address:</label>
+      <input type="text" id="comp_address" name="comp_address"  value="<?php echo $result['comp_address'] ; ?>">
+	  <label for="comp_address">Phone No.</label>
+      <input type="text" id="comp_phone" name="comp_phone"  value="<?php echo $result['comp_phone'] ; ?>">
+      <input type="submit" name="modify" value="Modify">
+    </form>
+	<?php
+}
+?>
